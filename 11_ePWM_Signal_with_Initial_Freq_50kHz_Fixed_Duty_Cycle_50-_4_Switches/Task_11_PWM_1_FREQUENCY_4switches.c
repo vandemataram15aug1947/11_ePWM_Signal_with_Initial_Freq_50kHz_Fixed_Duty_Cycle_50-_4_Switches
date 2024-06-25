@@ -1,5 +1,3 @@
-/*Maaz khan
-  Reg No : 19jzele0320
 
 /////////////////////////////// Task-11 ////////////////////////////////////////////////////////////
 
@@ -21,7 +19,7 @@ Generate two PWM signals with initial frequency of 50KHz and a fixed duty cycle 
 
 // Function Prototypes
 
-//////////////  MAAZ KHAN  ///////////////////
+//////////////  Vande  ///////////////////
 
 void initEPWM1(void);
 void PinMux_init();
@@ -58,7 +56,7 @@ void main(void)
     Interrupt_initVectorTable();
 
 
-    //////////////  MAAZ KHAN  ///////////////////
+    //////////////  Vande  ///////////////////
 
     // This is needed to write to EALLOW protected registers
     EALLOW;
@@ -79,7 +77,7 @@ void main(void)
     IER |= M_INT1; // M- means to Enable
     IER |= M_INT12; // M- means to Enable
 
-    //////////////  MAAZ KHAN  ///////////////////
+    //////////////  Vande  ///////////////////
 
     // Enable  ,XINT1,XINT2,XINT3 ,XINT4    in the PIE: Group 1 & 12 __interrupt 4,5,1,2
 
@@ -94,7 +92,7 @@ void main(void)
     // Enable PIE Group 12 INT2
     PieCtrlRegs.PIEIER12.bit.INTx2 = 1;
 
-    //////////////  MAAZ KHAN  ///////////////////
+    //////////////  Vande  ///////////////////
 
     //Configure GPIO67,GPIO22,GPIO11,GPIO14 FOR xINT1,xINT2xINT3,xINT4
     GPIO_SetupXINT1Gpio(67);
@@ -102,7 +100,7 @@ void main(void)
     GPIO_SetupXINT3Gpio(11);
     GPIO_SetupXINT4Gpio(14);
 
-    //////////////  MAAZ KHAN  ///////////////////
+    //////////////  Vande  ///////////////////
 
     // Check switch state for falling edge
     XintRegs.XINT1CR.bit.POLARITY = 1;          // Rising edge interrupt
@@ -119,7 +117,7 @@ void main(void)
     initEPWM1();
     initEPWM2();
 
-    //////////////  MAAZ KHAN  ///////////////////
+    //////////////  Vande  ///////////////////
 
     //Disable xINT1,xINT2,xINT3,xINT4
     XintRegs.XINT1CR.bit.ENABLE = 0;            // Disable XINT1
@@ -135,7 +133,7 @@ void main(void)
 
     while(1){
 
-        //////////////  MAAZ KHAN  ///////////////////
+        //////////////  Vande  ///////////////////
 
         // Enable XINT1
         XintRegs.XINT1CR.bit.ENABLE = 1;
@@ -154,7 +152,7 @@ void main(void)
 //
 void initEPWM1()
 {
-    //////////////  MAAZ KHAN  ///////////////////
+    //////////////  Vande  ///////////////////
 
     // 50k frequency
     EPwm1Regs.TBPRD = 1000;
@@ -163,7 +161,7 @@ void initEPWM1()
     EPwm1Regs.TBCTR = 0x0000;
     // Set Compare values  : 50% Duty Cycle
     EPwm1Regs.CMPA.bit.CMPA = 500 ;
-    //////////////  MAAZ KHAN  ///////////////////
+    //////////////  Vande  ///////////////////
     // Setup counter mode  : Count up and down  symmetric
 
     //////////////  END  ///////////////////
@@ -183,7 +181,7 @@ void initEPWM1()
 
 void PinMux_init()
 {
-    //////////////  MAAZ KHAN  ///////////////////
+    //////////////  Vande  ///////////////////
 
     EALLOW;
     //EPWM1 -> myEPWM1 Pinmux
@@ -195,7 +193,7 @@ void PinMux_init()
 
 }
 
-//////////////  MAAZ KHAN  ///////////////////
+//////////////  Vande  ///////////////////
 
 __interrupt void xINT1_isr(void)
 {
@@ -232,7 +230,7 @@ __interrupt void xINT1_isr(void)
 
 }
 
-//////////////  MAAZ KHAN  ///////////////////
+//////////////  Vande  ///////////////////
 
 __interrupt void xINT2_isr(void)
 {
@@ -269,7 +267,7 @@ __interrupt void xINT2_isr(void)
 
 }
 
-//////////////  MAAZ KHAN  ///////////////////
+//////////////  Vande  ///////////////////
 
 __interrupt void xINT3_isr(void)
 {
@@ -305,7 +303,7 @@ __interrupt void xINT3_isr(void)
     PieCtrlRegs.PIEACK.all = PIEACK_GROUP12;
 }
 
-//////////////  MAAZ KHAN  ///////////////////
+//////////////  Vande  ///////////////////
 
 __interrupt void xINT4_isr(void)
 {
